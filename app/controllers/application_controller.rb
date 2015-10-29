@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    #redirect_to root_url
+    redirect_to posts_url, notice: '没有操作权限!'
+  end
+
 end
