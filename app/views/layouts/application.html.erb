@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
     <title>Yidao</title>
+     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -9,7 +12,7 @@
   <body>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -32,16 +35,37 @@
       </div><!--/.nav-collapse -->
     </div>
     </nav>
-    <div class="container theme-showcase" style="margin-top:80px">
 
-      <% if flash.notice %>
-        <p id="notice" class="alert alert-danger" >
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash.notice %>
-        </p>
-      <% end %>
-      <%= yield %>
+    <div class="container-fluid" >
 
+      <div class="row" >
+        <div class="col-sm-3 col-md-2 sidebar" >
+          <ul class="nav nav-sidebar">
+            <li><%= link_to "用户管理",users_path%></li>
+            <li><%= link_to "调查问卷管理",sign_in_path %></li>
+            <li><a href="#">点评竞投管理</a></li>
+            <li><a href="#">活动管理</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">视频管理</a></li>
+            <li><a href="">积分管理</a></li>
+            <li><a href="">系统管理</a></li>
+            <li><a href="">举报管理</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  >
+
+          <% if flash.notice %>
+            <p id="notice" class="alert alert-danger" >
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= flash.notice %>
+            </p>
+          <% end %>
+          <%= yield %>
+
+        </div>
+      </div>
     </div>
 
     <script>
